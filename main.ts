@@ -1,11 +1,4 @@
-basic.showLeds(`
-    # # # # #
-    # . # . #
-    # . . . #
-    # # # # #
-    . . # . .
-    `)
-music.playTone(262, music.beat(BeatFraction.Sixteenth))
+let strip = neopixel.create(DigitalPin.P0, 30, NeoPixelMode.RGB)
 basic.forever(function () {
 	
 })
