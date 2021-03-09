@@ -1,8 +1,8 @@
 input.onButtonPressed(Button.A, function () {
-    strip.showRainbow(1, 360)
+    strip.clear()
 })
 input.onButtonPressed(Button.AB, function () {
-    strip.clear()
+    strip.showRainbow(1, 360)
 })
 input.onButtonPressed(Button.B, function () {
     strip.showColor(neopixel.colors(NeoPixelColors.Yellow))
