@@ -1,20 +1,6 @@
-input.onPinReleased(TouchPin.P2, function () {
-    if (pocitadlo != 0) {
-        pocitadlo = 0
-    } else {
-        pocitadlo = 1
-    }
-})
 input.onButtonPressed(Button.A, function () {
     pocitadlo += -1
     pocitadlo = Math.constrain(pocitadlo, 0, 5)
-})
-input.onPinPressed(TouchPin.P2, function () {
-    if (pocitadlo != 0) {
-        pocitadlo = 0
-    } else {
-        pocitadlo = 1
-    }
 })
 input.onSound(DetectedSound.Loud, function () {
     if (pocitadlo != 0) {
@@ -31,19 +17,19 @@ input.onButtonPressed(Button.B, function () {
     pocitadlo = Math.constrain(pocitadlo, 0, 5)
 })
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    strip.clear()
     pocitadlo = 0
 })
 let pocitadlo = 0
-let strip: neopixel.Strip = null
 input.setSoundThreshold(SoundThreshold.Loud, 111)
-strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
+let strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 strip.setBrightness(255)
 pocitadlo = 0
 strip.clear()
 basic.forever(function () {
+    basic.showNumber(pocitadlo)
     if (pocitadlo == 0) {
         strip.clear()
+        strip.show()
     }
     if (pocitadlo == 1) {
         strip.showColor(neopixel.rgb(255, 103, 23))
@@ -60,7 +46,5 @@ basic.forever(function () {
     if (pocitadlo == 5) {
         strip.showRainbow(1, 360)
         strip.rotate(1)
-        basic.pause(200)
     }
-    basic.showNumber(pocitadlo)
 })
