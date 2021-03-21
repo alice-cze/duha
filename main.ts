@@ -20,13 +20,17 @@ input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     pocitadlo = 0
 })
 let pocitadlo = 0
-input.setSoundThreshold(SoundThreshold.Loud, 111)
+input.setSoundThreshold(SoundThreshold.Loud, 150)
 let strip = neopixel.create(DigitalPin.P1, 30, NeoPixelMode.RGB)
 strip.setBrightness(255)
 pocitadlo = 0
 strip.clear()
 basic.forever(function () {
-    basic.showNumber(pocitadlo)
+    if (pocitadlo != 0) {
+        basic.showNumber(pocitadlo)
+    } else {
+        basic.clearScreen()
+    }
     if (pocitadlo == 0) {
         strip.clear()
         strip.show()
